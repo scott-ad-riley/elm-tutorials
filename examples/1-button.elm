@@ -31,6 +31,8 @@ model =
 type Msg
   = Increment
   | Decrement
+  | Reset
+  | Square
 
 
 update : Msg -> Model -> Model
@@ -42,6 +44,11 @@ update msg model =
     Decrement ->
       model - 1
 
+    Reset ->
+      0
+
+    Square ->
+      model * model
 
 
 -- VIEW
@@ -53,4 +60,6 @@ view model =
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (toString model) ]
     , button [ onClick Increment ] [ text "+" ]
+    , button [ onClick Reset ] [ text "Reset" ]
+    , button [ onClick Square ] [ text "Square" ]
     ]
